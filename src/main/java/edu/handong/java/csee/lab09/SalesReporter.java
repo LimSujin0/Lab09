@@ -1,36 +1,61 @@
-package edu.handong.java.csee.lab09;
+package edu.handong.java.csee.lab09;//package name
 
-import edu.handong.java.csee.lab09.Salesman;
-import java.util.Scanner;
-
+import edu.handong.java.csee.lab09.Salesman;//import Salesman class in lab09 package
+import java.util.Scanner;//import scanner class
+/**
+ * This is a class named SalesReporter
+ * this program generate a sales report
+ * associates salesmen that have the highest sales
+ * and how the sales of each associate compare to the average.
+ * Enjoy my program
+ * Thank you JaeChang Name Professor :)
+ * @author imsuj
+ *
+ */
 public class SalesReporter {
 	
-	Scanner myScanner = new Scanner(System.in);
-	private double highestSales;
-	private double averageSales;
-	private Salesman[] team;
+	Scanner myScanner = new Scanner(System.in); // instantiating a Scanner to myScanner 
+	private double highestSales;//This is a double type variable named highestSales
+	private double averageSales;//This is a double type variable named averageSales
+	private Salesman[] team;//This is a Salesman type variable named team.
 	private int numberOfSalesman;
 	
+	/**
+	 * This is a main method of SalesReporter
+	 * get a number of salesman from user.
+	 * and get data name and sales of the salesman from user.
+	 * calculate average and highest sales
+	 * print out the results of outcomes.
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		SalesReporter myReporter  = new SalesReporter();
-		myReporter.SalesReport();
-		myReporter.getData();
-		myReporter.calculateAverageSales();
-		myReporter.calculateHighestSales();
-		myReporter.printOutResults();
+		SalesReporter myReporter  = new SalesReporter();//instantiating SalesReporter class
+		myReporter.SalesReport();//get a number of salesman from user.
+		myReporter.getData();//get data name and sales of the salesman from user.
+		myReporter.calculateAverageSales();//calculate average sales of that data
+		myReporter.calculateHighestSales();//calculate highest sales of that data
+		myReporter.printOutResults();//print out the result of outcomes.
 	}
 
-	
+	/**
+	 * This is a method named Sales Reporter
+	 * gets a number of salesman from user.
+	 * sets number of sales man to variable obtained
+	 */
 	public void SalesReport() {
-		System.out.println("Enter number of sales associates:");
-		Scanner myScanner  = new Scanner(System.in);
-		numberOfSalesman = myScanner.nextInt();
+		System.out.println("Enter number of sales associates:");//print out this line on a user's monitor
+		numberOfSalesman = myScanner.nextInt();//get a number of salesman from user, and set numberOfSalesman to variable obtained
 	}
 	
+	/**
+	 * This is a method named obtained
+	 * gets data name and sales of the salesman from user.
+	 * save that data in the array team.
+	 */
 	public void getData() {
-		team = new Salesman[numberOfSalesman];
+		team = new Salesman[numberOfSalesman];//create 10 references to the Salesman object(that is, creates 10 salesman.)
 		
-		for(int i =0; i<numberOfSalesman; i++) {
+		for(int i =0; i<numberOfSalesman; i++) {//this is a for loop
 			System.out.println("\nEnter data for associate number " + (i+1));
 			
 			System.out.print("Enter name of sales associate: ");
