@@ -11,33 +11,34 @@ public class SalesReporter {
 	private Salesman[] team;
 	private int numberOfSalesman;
 	
-	
-	public void SalesReport() {
-		System.out.println("Enter number of salesman");
-		Scanner myScanner  = new Scanner(System.in);
-		numberOfSalesman = myScanner.nextInt();
-	}
-	
-
 	public static void main(String[] args) {
 		SalesReporter myReporter  = new SalesReporter();
+		myReporter.SalesReport();
 		myReporter.getData();
 		myReporter.calculateAverageSales();
 		myReporter.calculateHighestSales();
 		myReporter.printOutResults();
 	}
 
+	
+	public void SalesReport() {
+		System.out.println("Enter number of sales associates:");
+		Scanner myScanner  = new Scanner(System.in);
+		numberOfSalesman = myScanner.nextInt();
+	}
+	
 	public void getData() {
 		team = new Salesman[numberOfSalesman];
 		
 		for(int i =0; i<numberOfSalesman; i++) {
-			System.out.println("Enter data for associate number " + (i+1));
+			System.out.println("\nEnter data for associate number " + (i+1));
 			
 			System.out.print("Enter name of sales associate: ");
 			String name = myScanner.nextLine();
 			
 			System.out.print("Enter associate's sales: $");
 			double sales = myScanner.nextDouble();
+			myScanner.nextLine();
 			
 			Salesman mySalesman = new Salesman();
 			mySalesman.setName(name);
@@ -71,28 +72,27 @@ public class SalesReporter {
 		System.out.println("Average sales per associate is $" + this.averageSales);
 		System.out.println("The highest sales figure is $" + this.highestSales);
 				
-		for(int =0 ; i < team.length; i++) {
+		for(int i = 0 ; i < team.length; i++) {
 			if(team[i].getSales() == this.highestSales) {
-				System.out.println("Ths following had the highest sales:");
+				System.out.println("\nThs following had the highest sales:");
 				System.out.println("Name :" + team[i].getName());
 				System.out.println("Sales:" + team[i].getSales());
-				System.out.println("$" + (this.highestSales - this.AverageSales) + "above the average");
+				System.out.println("$" + (this.highestSales - this.averageSales) + " above the average.");
 			}
 		}
 		
-		System.out.println("The rest performed as follows : ");
-		for(int =0 ; i = team.length; i++) {
-			if(team[i].getSales() > this.averageSales) {
-				System.out.println("Name:" + team[i].getName());
-				System.out.println("Sales:" + team[i].getSales());
-				System.out.println("$" + (team[i].getSales()- this.AverageSales) + "above the average");
+		System.out.print("\nThe rest performed as follows : ");
+		for(int j = 0 ; j < team.length ; j++) {
+			if(team[j].getSales() > this.averageSales && team[j].getSales() != this.highestSales) {
+				System.out.println("\nName:" + team[j].getName());
+				System.out.println("Sales:" + team[j].getSales());
+				System.out.println("$" + (team[j].getSales()- this.averageSales) + " above the average.");
 			}
-			else {
-				System.out.println("Name:" + team[i].getName());
-				System.out.println("Sales:" + team[i].getSales());
-				System.out.println("$" + ( this.AverageSales - team[i].getSales()) + "below the average");
+			else if(team[j].getSales() < this.averageSales && team[j].getSales() != this.highestSales) {
+				System.out.println("\nName:" + team[j].getName());
+				System.out.println("Sales:" + team[j].getSales());
+				System.out.println("$" + ( this.averageSales - team[j].getSales()) + " below the average.");
 			}
 		}
 	}		
-	
 }
