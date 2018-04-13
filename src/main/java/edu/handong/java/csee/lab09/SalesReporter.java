@@ -55,68 +55,80 @@ public class SalesReporter {
 	public void getData() {
 		team = new Salesman[numberOfSalesman];//create 10 references to the Salesman object(that is, creates 10 salesman.)
 		
-		for(int i =0; i<numberOfSalesman; i++) {//this is a for loop
-			System.out.println("\nEnter data for associate number " + (i+1));
+		for(int i =0; i<numberOfSalesman; i++) {//this is a for loop for i = 0 ~ (numberOfSalesman-1)
+			System.out.println("\nEnter data for associate number " + (i+1));//print out this line on the monitor.
 			
-			System.out.print("Enter name of sales associate: ");
-			String name = myScanner.nextLine();
+			System.out.print("Enter name of sales associate: ");//print out this line on the monitor.
+			String name = myScanner.nextLine(); //get a name of salesman from user, and set name to variable obtained
 			
-			System.out.print("Enter associate's sales: $");
-			double sales = myScanner.nextDouble();
-			myScanner.nextLine();
+			System.out.print("Enter associate's sales: $");//print out this line on the monitor.
+			double sales = myScanner.nextDouble(); //get a sales of salesman from user, and set sales to variable obtained
+			myScanner.nextLine();//buffer initialization
 			
-			Salesman mySalesman = new Salesman();
-			mySalesman.setName(name);
-			mySalesman.setSales(sales);
+			Salesman mySalesman = new Salesman(); //instantiating Salesman class
+			mySalesman.setName(name);//set name of mySalesman to obtained variable 
+			mySalesman.setSales(sales);//set sales of mySalesman to obtained variable
 			
-			team[i] = mySalesman;
+			team[i] = mySalesman; // set Salesman in team[i] to my Salesman
 		}
 	}
 	
 
-	
+	/**
+	 * This is a method named calculateAverageSales
+	 * calculates averages of all Salesman in array
+	 */
 	public void calculateAverageSales() {
-		double sum = 0;
+		double sum = 0; // this is a double type variable named sum
 		
-		for(int i = 0 ; i < team.length; i++) {
-			double sales = team[i].getSales();
-			sum = sum + sales;
+		for(int i = 0 ; i < team.length; i++) { //this is a for loop for i = 0 ~ (team.length-1) because the number means index of the array
+			double sales = team[i].getSales();//set sales to sales' value of team[i]
+			sum = sum + sales; //set sum to sum+sales
 		}
 		
-		this.averageSales = sum / team.length;
+		this.averageSales = sum / team.length; //set instance variable averageSales to sum/team.length
 	}
 	
+	/**
+	 * This is a method named calculateHighestSales
+	 * calculates the highest sales in all Salesman in array
+	 */
 	public void calculateHighestSales() {
-		for(int i = 0; i < (team.length)-1; i++) {
-			if(team[i].getSales() < team[i+1].getSales())
-				this.highestSales = team[i+1].getSales();
+		for(int i = 0; i < (team.length)-1; i++) {//this is a for loop for i = 0 ~ (team.length-1)
+			if(team[i].getSales() < team[i+1].getSales())//if sales of team[i] is smaller than sales of team[i+1]
+				this.highestSales = team[i+1].getSales();//set the highest sales to sales of team[i+1]
 		}
 	}
 	
+	/**
+	 * this is a method named printOutResults
+	 * prints out the average sales per associate and the highest sales figure
+	 * prints out the outcomes of all salesman
+	 */
 	public void printOutResults() {
-		System.out.println("Average sales per associate is $" + this.averageSales);
-		System.out.println("The highest sales figure is $" + this.highestSales);
+		System.out.println("Average sales per associate is $" + this.averageSales);//prints out the average sales per associate
+		System.out.println("The highest sales figure is $" + this.highestSales);//prints out the highest sales figure
 				
-		for(int i = 0 ; i < team.length; i++) {
-			if(team[i].getSales() == this.highestSales) {
-				System.out.println("\nThs following had the highest sales:");
-				System.out.println("Name :" + team[i].getName());
-				System.out.println("Sales:" + team[i].getSales());
-				System.out.println("$" + (this.highestSales - this.averageSales) + " above the average.");
+		for(int i = 0 ; i < team.length; i++) {//this is a for loop for i=0 ~ (team.length-1)
+			if(team[i].getSales() == this.highestSales) {//if the value of sales is same as the highest value of sales in the array
+				System.out.println("\nThs following had the highest sales:");//print out this line.
+				System.out.println("Name :" + team[i].getName());//print out a name of the highest member
+				System.out.println("Sales:" + team[i].getSales());//print out a sales of the highest member
+				System.out.println("$" + (this.highestSales - this.averageSales) + " above the average.");//print out difference between mean and value
 			}
 		}
 		
-		System.out.print("\nThe rest performed as follows : ");
-		for(int j = 0 ; j < team.length ; j++) {
-			if(team[j].getSales() > this.averageSales && team[j].getSales() != this.highestSales) {
-				System.out.println("\nName:" + team[j].getName());
-				System.out.println("Sales:" + team[j].getSales());
-				System.out.println("$" + (team[j].getSales()- this.averageSales) + " above the average.");
+		System.out.print("\nThe rest performed as follows : ");//print out this line
+		for(int j = 0 ; j < team.length ; j++) {//this is a for loop for i=0 ~ (team.length-1)
+			if(team[j].getSales() > this.averageSales && team[j].getSales() != this.highestSales) {//if the value of sales is bigger than the average value of sales in the array(not the highest value)
+				System.out.println("\nName:" + team[j].getName());//print out a name of the member
+				System.out.println("Sales:" + team[j].getSales());//print out a sales of the member
+				System.out.println("$" + (team[j].getSales()- this.averageSales) + " above the average.");//print out difference between mean and value
 			}
-			else if(team[j].getSales() < this.averageSales && team[j].getSales() != this.highestSales) {
-				System.out.println("\nName:" + team[j].getName());
-				System.out.println("Sales:" + team[j].getSales());
-				System.out.println("$" + ( this.averageSales - team[j].getSales()) + " below the average.");
+			else if(team[j].getSales() < this.averageSales && team[j].getSales() != this.highestSales) {//if the value of sales is smaller than the average value of sales in the array(not the highest value)
+				System.out.println("\nName:" + team[j].getName());//print out a name of the member
+				System.out.println("Sales:" + team[j].getSales());//print out a sales of the member
+				System.out.println("$" + ( this.averageSales - team[j].getSales()) + " below the average.");//print out difference between mean and value
 			}
 		}
 	}		
