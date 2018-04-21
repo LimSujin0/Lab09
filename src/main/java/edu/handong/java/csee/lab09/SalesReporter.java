@@ -1,8 +1,7 @@
 package edu.handong.java.csee.lab09;//package name
 
-import edu.handong.java.csee.lab09.Salesman;//import Salesman class in lab09 package
+//import edu.handong.java.csee.lab09.Salesman;//import Salesman class in lab09 package
 import java.util.Scanner;//import scanner class
-import java.util.HashMap; //import java.util.HashMap
 import java.util.ArrayList; //import java.util.ArrayList
 /**
  * This is a class named SalesReporter
@@ -55,7 +54,7 @@ public class SalesReporter {
 	 * save that data in the array team.
 	 */
 	public void getData() {
-		int i =0; //this is a int type variable named i
+		int i = 0; //this is a int type variable named i
 		
 		while(true) {//this is a infinite while
 			System.out.println("\nEnter data for associate number " + ((i++)+1));//print out this line on the monitor.
@@ -93,7 +92,7 @@ public class SalesReporter {
 			sum = sum + sale; //set sum to sum+sale
 		}
 		
-		this.averageSales = sum/sales.size(); //set instance variable averageSales to sum/team.length
+		this.averageSales =(int) sum/sales.size(); //set instance variable averageSales to sum/team.length
 	}
 	
 	/**
@@ -132,7 +131,7 @@ public class SalesReporter {
 		
 		System.out.print("\nThe rest performed as follows : ");//print out this line
 		for(int j = 0 ; j < names.size(); j++) {//this is a for loop for i=0 ~  names.size()-1
-			if(sales.get(j) > this.averageSales && sales.get(j) != this.highestSales) {//if the value of sales is bigger than the average value of sales in the array(not the highest value)
+			if(sales.get(j) > this.averageSales && sales.get(j)!= this.highestSales) {//if the value of sales is bigger than the average value of sales in the array(not the highest value)
 				System.out.println("\nName:" + names.get(j));//print out a name of the member
 				System.out.println("Sales:" + sales.get(j));//print out a sales of the member
 				System.out.println("$" + (sales.get(j)- this.averageSales) + " above the average.");//print out difference between mean and value
