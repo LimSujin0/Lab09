@@ -8,6 +8,8 @@ public class Main {
 		DataReader DR = new DataReader();
 		ArrayList<String> result = DR.getData(args[0]);
 		
+		MessageFilter MF = new MessageFilter();
+		ArrayList<String> resultF = MF.messageFilt(result);
 		
 		DataWriter DW = new DataWriter();
 		DW.fileWirte(result);

@@ -26,7 +26,7 @@ public class DataReader {
 	
 	public ArrayList<String> readFiles(File[] files){
 		ArrayList<String> message = new ArrayList<String>();
-		//read file logic
+		//read file logic (CVS vs TXT file)
 		return message;
 	}
 
